@@ -36,14 +36,6 @@ namespace GUI_4_LAB_2
                 {
                     t.GetBindingExpression(TextBox.TextProperty).UpdateSource();
                 }
-                else if (item is StackPanel s)
-				{
-					foreach (RadioButton rb in s.Children)
-					{
-                        
-                        rb.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                    }
-				}
                 
             }
             this.DialogResult = true;
