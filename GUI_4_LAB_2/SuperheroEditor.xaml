@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI_4_LAB_2"
         xmlns:vms="clr-namespace:GUI_4_LAB_2.ViewModels"
+        xmlns:helpers="clr-namespace:GUI_4_LAB_2.Helpers"
+        xmlns:mdl="clr-namespace:GUI_4_LAB_2.Models"
         mc:Ignorable="d"
         Title="Superhero Editor 69420" Height="430" Width="300">
+
+    <Window.Resources>
+        <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
+    </Window.Resources>
     <StackPanel x:Name="stack" VerticalAlignment="Stretch">
 
         <Label Content="Name" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
@@ -20,9 +26,9 @@
 
         <Label Content="Alignment" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <RadioButton Content="Evil" Margin="10"/>
-            <RadioButton Content="Neutral" Margin="10"/>
-            <RadioButton Content="Bad" Margin="10"/>
+            <RadioButton Content="Good" IsChecked="{Binding Current.Aligment, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static mdl:Aligment.good}}" Margin="10"/>
+            <RadioButton Content="Neutral" IsChecked="{Binding Current.Aligment, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static mdl:Aligment.neutral}}" Margin="10"/>
+            <RadioButton Content="Evil" IsChecked="{Binding Current.Aligment, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static mdl:Aligment.evil}}" Margin="10"/>
         </StackPanel>
 
         <Button Content="Save" Click="Button_Click" Padding="10" Margin="20"/>

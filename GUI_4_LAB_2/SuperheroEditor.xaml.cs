@@ -36,6 +36,7 @@ namespace GUI_4_LAB_2
                 {
                     t.GetBindingExpression(TextBox.TextProperty).UpdateSource();
                 }
+                
             }
             this.DialogResult = true;
         }

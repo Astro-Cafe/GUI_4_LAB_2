@@ -12,6 +12,8 @@ namespace GUI_4_LAB_2.Services
         public void Edit(Superhero sh)
         {
             //WINDOW POPUP
+
+            new SuperheroEditor(sh).ShowDialog();
         }
     }
 }
