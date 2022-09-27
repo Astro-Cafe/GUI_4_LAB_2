@@ -1,0 +1,31 @@
+﻿<Window x:Class="GUI_4_LAB_2.SuperheroEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI_4_LAB_2"
+        xmlns:vms="clr-namespace:GUI_4_LAB_2.ViewModels"
+        mc:Ignorable="d"
+        Title="Superhero Editor 69420" Height="430" Width="300">
+    <StackPanel x:Name="stack" VerticalAlignment="Stretch">
+
+        <Label Content="Name" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
+        <TextBox Text="{Binding Current.Name}" Padding="10" HorizontalContentAlignment="Center"/>
+
+        <Label Content="Power" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
+        <TextBox Text="{Binding Current.Power}" Padding="10" HorizontalContentAlignment="Center"/>
+
+        <Label Content="Speed" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
+        <TextBox Text="{Binding Current.Speed}"  Padding="10"  HorizontalContentAlignment="Center"/>
+
+        <Label Content="Alignment" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <RadioButton Content="Evil" Margin="10"/>
+            <RadioButton Content="Neutral" Margin="10"/>
+            <RadioButton Content="Bad" Margin="10"/>
+        </StackPanel>
+
+        <Button Content="Save" Click="Button_Click" Padding="10" Margin="20"/>
+
+    </StackPanel>
+</Window>
