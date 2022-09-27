@@ -13,7 +13,8 @@ namespace GUI_4_LAB_2.Helpers
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string content = value as string;
+            string content = value.ToString();
+
             if (content == "evil")
             {
                 return Brushes.PaleVioletRed;

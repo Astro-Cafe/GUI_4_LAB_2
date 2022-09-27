@@ -98,21 +98,24 @@ namespace GUI_4_LAB_2.ViewModels
             {
                 Name = "Dora The Destroyer",
                 Power = 10,
-                Speed = 5
+                Speed = 5,
+                Aligment =Aligment.good
 
             });
             HQ.Add(new Superhero
             {
                 Name = "Chadler",
                 Power = 10,
-                Speed = 10
+                Speed = 10,
+                Aligment = Aligment.neutral
 
             });
             HQ.Add(new Superhero
             {
                 Name = "Csillámfaszláma",
                 Power = 1,
-                Speed = 3
+                Speed = 3,
+                Aligment = Aligment.evil
 
             });
 

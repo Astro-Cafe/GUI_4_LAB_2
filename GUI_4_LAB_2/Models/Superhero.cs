@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GUI_4_LAB_2.Models
 {
-    public enum Side
+    public enum Aligment
     {
         evil, neutral, good
     }
@@ -38,7 +38,16 @@ namespace GUI_4_LAB_2.Models
             set { SetProperty(ref speed, value); }
         }
 
-        public int Cost 
+		private Aligment aligment;
+
+		public Aligment Aligment
+        {
+			get { return aligment; }
+			set { aligment = value; }
+		}
+        
+
+		public int Cost 
         {
             get
             {
@@ -52,7 +61,9 @@ namespace GUI_4_LAB_2.Models
             {
                 Name = Name,
                 power = power,
-                speed = speed
+                speed = speed,
+                aligment = aligment
+                
             };
         }
     }

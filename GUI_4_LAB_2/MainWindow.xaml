@@ -26,7 +26,7 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Black"  BorderThickness="1">
-                        <Grid Background="{Binding Enum, Converter={StaticResource enumConvert}}">
+                        <Grid Background="{Binding Aligment, Converter={StaticResource enumConvert}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="1*"/>
@@ -37,6 +37,7 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                                 <Label Content="{Binding Name}" FontSize="14" FontWeight="Bold" Grid.Column="0" Grid.Row="0"/>
+                                <Label Content="{Binding Aligment}" FontSize="14" FontWeight="Bold" Grid.Column="1" Grid.Row="0"/>
                                 <Label Content="{Binding Power}" ContentStringFormat="Power : {0}" Grid.Row="1" Grid.Column="0"/>
                                 <Label Content="{Binding Speed}" ContentStringFormat="Speed : {0}" Grid.Row="1" Grid.Column="1"/>
                                 <ProgressBar Height="20" Margin="10" Maximum="10"  Value="{Binding Power}" Grid.Column="0" Grid.Row="2"
