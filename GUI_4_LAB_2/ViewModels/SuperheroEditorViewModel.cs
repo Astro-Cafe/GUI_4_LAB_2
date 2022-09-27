@@ -1,4 +1,5 @@
 ﻿using GUI_4_LAB_2.Models;
+using GUI_4_LAB_2.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +22,6 @@ namespace GUI_4_LAB_2.ViewModels
         {
             this.Current = superhero;
         }
+
     }
 }

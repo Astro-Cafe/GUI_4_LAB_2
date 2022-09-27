@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using System.Threading.Tasks;
+using GUI_4_LAB_2.Shared;
 
 namespace GUI_4_LAB_2.Models
 {
-    public enum Aligment
-    {
-        evil, neutral, good
-    }
 
     public class Superhero : ObservableObject
     {

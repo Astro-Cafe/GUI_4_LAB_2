@@ -1,5 +1,6 @@
 ﻿using GUI_4_LAB_2.Logic;
 using GUI_4_LAB_2.Models;
+using GUI_4_LAB_2.Shared;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
