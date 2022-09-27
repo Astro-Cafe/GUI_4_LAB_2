@@ -29,8 +29,8 @@ namespace GUI_4_LAB_2.ViewModels
             set
             {
                 SetProperty(ref selectedFromHq, value);
-                //(AddToBattleFieldCommand as RelayCommand).NotifyCanExecuteChanged();
-                //(EditSuperheroCommand as RelayCommand).NotifyCanExecuteChanged();
+                (AddToBattlefieldCommand as RelayCommand).NotifyCanExecuteChanged();
+                (EditSuperheroCommand as RelayCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -41,7 +41,7 @@ namespace GUI_4_LAB_2.ViewModels
             set
             {
                 SetProperty(ref selectedFromBattlefield, value);
-                //(RemoveFromBattlefieldCommand as RelayCommand).NotifyCanExecuteChanged();
+                (RemoveFromBattlefieldCommand as RelayCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -127,12 +127,12 @@ namespace GUI_4_LAB_2.ViewModels
             logic.SetupCollections(HQ, Battlefield);
 
             AddToBattlefieldCommand = new RelayCommand(
-                () => logic.AddToBattlefield(SelectedFromBattlefield),
+                () => logic.AddToBattlefield(selectedFromHq),
                 () => SelectedFromHq != null
                 );
 
             RemoveFromBattlefieldCommand = new RelayCommand(
-                () => logic.RemoveFromBattlefield(SelectedFromBattlefield),
+                () => logic.RemoveFromBattlefield(selectedFromBattlefield),
                 () => SelectedFromBattlefield != null
                 );
 
@@ -141,6 +141,12 @@ namespace GUI_4_LAB_2.ViewModels
                 () => SelectedFromHq != null
                 );
 
+            Messenger.Register<MainWindowViewModel, string, string>(this, "SHINFO", (recepient, msg) =>
+            {
+                OnPropertyChanged("AllCost");
+                OnPropertyChanged("AVGSpeed");
+                OnPropertyChanged("AVGPower");
+            });
         }
     }
 }

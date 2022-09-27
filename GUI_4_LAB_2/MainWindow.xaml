@@ -8,7 +8,7 @@
         xmlns:vms="clr-namespace:GUI_4_LAB_2.ViewModels"
         xmlns:helpers="clr-namespace:GUI_4_LAB_2.Helpers"
         mc:Ignorable="d"
-        Title="Superhero Planner" Height="450" Width="800">
+        Title="Superhero Planner" Height="450" Width="800" >
     <Window.DataContext>
         <vms:MainWindowViewModel/>
     </Window.DataContext>
@@ -16,13 +16,20 @@
         <helpers:NumberToColorConverter x:Key="colorConvert"/>
         <helpers:EnumToColorConverter x:Key="enumConvert" />
     </Window.Resources>
-    <Grid>
+    <Grid Background="LightBlue" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Column="0" ItemsSource="{Binding HQ}" SelectedItem="{Binding SelectedFromHq}" HorizontalContentAlignment="Stretch">
+
+        <Label Content="HQ" Background="LightBlue" VerticalAlignment="Stretch" VerticalContentAlignment="Center" 
+               HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="0" BorderBrush="Black" BorderThickness="1" FontWeight="Bold"/>
+        <ListBox Grid.Column="0" ItemsSource="{Binding HQ}" SelectedItem="{Binding SelectedFromHq}" HorizontalContentAlignment="Stretch" Grid.Row="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Black"  BorderThickness="1">
@@ -36,38 +43,61 @@
                                 <RowDefinition Height="1*"/>
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
-                                <Label Content="{Binding Name}" FontSize="14" FontWeight="Bold" Grid.Column="0" Grid.Row="0"/>
-                                <Label Content="{Binding Aligment}" FontSize="14" FontWeight="Bold" Grid.Column="1" Grid.Row="0"/>
-                                <Label Content="{Binding Power}" ContentStringFormat="Power : {0}" Grid.Row="1" Grid.Column="0"/>
-                                <Label Content="{Binding Speed}" ContentStringFormat="Speed : {0}" Grid.Row="1" Grid.Column="1"/>
-                                <ProgressBar Height="20" Margin="10" Maximum="10"  Value="{Binding Power}" Grid.Column="0" Grid.Row="2"
+                            <Label Content="{Binding Name}" FontSize="14" FontWeight="Bold" Grid.Column="0" Grid.Row="0"/>
+                            <Label Content="{Binding Aligment}" FontSize="14" FontWeight="Bold" Grid.Column="1" Grid.Row="0"/>
+                            <Label Content="{Binding Power}" ContentStringFormat="Power : {0}" Grid.Row="1" Grid.Column="0"/>
+                            <Label Content="{Binding Speed}" ContentStringFormat="Speed : {0}" Grid.Row="1" Grid.Column="1"/>
+                            <ProgressBar Height="20" Margin="10" Maximum="10"  Value="{Binding Power}" Grid.Column="0" Grid.Row="2"
                                          Foreground="{Binding Power, Converter={StaticResource colorConvert}}"   />
-                                <ProgressBar Height="20" Margin="10" Maximum="10" Value="{Binding Speed}" Grid.Column="1" Grid.Row="2" 
+                            <ProgressBar Height="20" Margin="10" Maximum="10" Value="{Binding Speed}" Grid.Column="1" Grid.Row="2" 
                                          Foreground="{Binding Speed, Converter={StaticResource colorConvert}}" />
                         </Grid>
                     </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StackPanel Grid.Column="1">
-            <Label HorizontalContentAlignment="Center" Content="999" ContentStringFormat="Cost: {0}$" Margin="10"/>
-            <Button Content="Send to battle!" Margin="10" Padding="10" />
-            <Button Content="Retrieve from battle!" Margin="10" Padding="10" />
-            <Button Content="Edit hero!" Margin="10" Padding="10" />
-            <Button Content="Create hero!" Margin="10" Padding="10" />
-            <Label HorizontalContentAlignment="Center" FontSize="14" Content="999" ContentStringFormat="Average power: {0}"/>
-            <ProgressBar Height="20" Minimum="0" Maximum="10" Margin="10" Value="5" Foreground="IndianRed"/>
-            <Label HorizontalContentAlignment="Center" FontSize="14" Content="999" ContentStringFormat="Average speed: {0}"/>
-            <ProgressBar Height="20" Minimum="0" Maximum="10" Margin="10" Value="5" Foreground="IndianRed"/>
+        
+        <StackPanel Grid.Column="1" Grid.RowSpan="2">
+            <Label HorizontalContentAlignment="Center" Content="{Binding AllCost}" ContentStringFormat="Cost: {0}$" Margin="10"/>
+            
+            <Button Content="Send to battle!" Command="{Binding AddToBattlefieldCommand}" Margin="10" Padding="10" />
+            <Button Content="Retrieve from battle!"  Command="{Binding RemoveFromBattlefieldCommand}" Margin="10" Padding="10" />
+            <Button Content="Edit hero!" Margin="10" Command="{Binding EditSuperheroCommand}"  Padding="10" />
+            <Button Content="Create hero!" Margin="10" Command="{Binding EditSuperheroCommand}" Padding="10" />
+
+            <Label HorizontalContentAlignment="Center" FontSize="14" Content="{Binding AVGPower, Mode=OneWay}" ContentStringFormat="Average power: {0}"/>
+            <ProgressBar Height="20" Minimum="0" Maximum="10" Margin="10" Value="{Binding AVGPower,Mode=OneWay}" Foreground="{Binding AVGPower, Converter={StaticResource colorConvert},Mode=OneWay }"/>
+
+            <Label HorizontalContentAlignment="Center" FontSize="14" Content="{Binding AVGSpeed,Mode=OneWay}" ContentStringFormat="Average speed: {0}"/>
+            <ProgressBar Height="20" Minimum="0" Maximum="10" Margin="10" Value="{Binding AVGSpeed,Mode=OneWay}" Foreground="{Binding AVGSpeed, Converter={StaticResource colorConvert},Mode=OneWay}"/>
         </StackPanel>
-        <ListBox Grid.Column="2" ItemsSource="{Binding HQ}" SelectedItem="{Binding SelectedFromBattlefield}">
+
+        <Label Content="Battlefield" Background="LightBlue" VerticalAlignment="Stretch" VerticalContentAlignment="Center" 
+               HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="2" BorderBrush="Black" BorderThickness="1" FontWeight="Bold"/>
+        <ListBox Grid.Column="2" ItemsSource="{Binding Battlefield}" SelectedItem="{Binding SelectedFromBattlefield}" HorizontalContentAlignment="Stretch" Grid.Row="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content=""/>
-                        <Label Content=""/>
-                        <Label Content=""/>
-                    </StackPanel>
+                    <Border BorderBrush="Black"  BorderThickness="1">
+                        <Grid Background="{Binding Aligment, Converter={StaticResource enumConvert}}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Label Content="{Binding Name}" FontSize="14" FontWeight="Bold" Grid.Column="0" Grid.Row="0"/>
+                            <Label Content="{Binding Aligment}" FontSize="14" FontWeight="Bold" Grid.Column="1" Grid.Row="0"/>
+                            <Label Content="{Binding Power}" ContentStringFormat="Power : {0}" Grid.Row="1" Grid.Column="0"/>
+                            <Label Content="{Binding Speed}" ContentStringFormat="Speed : {0}" Grid.Row="1" Grid.Column="1"/>
+                            <ProgressBar Height="20" Margin="10" Maximum="10"  Value="{Binding Power}" Grid.Column="0" Grid.Row="2" 
+                                         Foreground="{Binding Power, Converter={StaticResource colorConvert}}"   />
+                            <ProgressBar Height="20" Margin="10" Maximum="10" Value="{Binding Speed}" Grid.Column="1" Grid.Row="2" 
+                                         Foreground="{Binding Speed, Converter={StaticResource colorConvert}}" />
+                        </Grid>
+                    </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
