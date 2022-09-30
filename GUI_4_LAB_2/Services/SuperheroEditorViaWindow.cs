@@ -9,11 +9,18 @@ namespace GUI_4_LAB_2.Services
 {
     public class SuperheroEditorViaWindow : ISuperheroEditorService
     {
-        public void Edit(Superhero sh)
+		public void Create()
+		{
+            //WINDOW POPUP
+            Superhero sh = new Superhero();
+            new SuperheroEditor(sh,true).ShowDialog();
+        }
+
+		public void Edit(Superhero sh)
         {
             //WINDOW POPUP
 
-            new SuperheroEditor(sh).ShowDialog();
+            new SuperheroEditor(sh,false).ShowDialog();
         }
     }
 }

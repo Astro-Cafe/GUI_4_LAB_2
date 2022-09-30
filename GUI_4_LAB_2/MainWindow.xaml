@@ -63,7 +63,7 @@
             <Button Content="Send to battle!" Command="{Binding AddToBattlefieldCommand}" Margin="10" Padding="10" />
             <Button Content="Retrieve from battle!"  Command="{Binding RemoveFromBattlefieldCommand}" Margin="10" Padding="10" />
             <Button Content="Edit hero!" Margin="10" Command="{Binding EditSuperheroCommand}"  Padding="10" />
-            <Button Content="Create hero!" Margin="10" Command="{Binding EditSuperheroCommand}" Padding="10" />
+            <Button Content="Create hero!" Margin="10" Command="{Binding CreateSuperheroCommand}" Padding="10" />
 
             <Label HorizontalContentAlignment="Center" FontSize="14" Content="{Binding AVGPower, Mode=OneWay}" ContentStringFormat="Average power: {0}"/>
             <ProgressBar Height="20" Minimum="0" Maximum="10" Margin="10" Value="{Binding AVGPower,Mode=OneWay}" Foreground="{Binding AVGPower, Converter={StaticResource colorConvert},Mode=OneWay }"/>

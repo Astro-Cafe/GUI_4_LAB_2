@@ -49,7 +49,7 @@ namespace GUI_4_LAB_2.ViewModels
         public ICommand AddToBattlefieldCommand { get; set; }
         public ICommand RemoveFromBattlefieldCommand { get; set; }
         public ICommand EditSuperheroCommand { get; set; }
-        //public ICommand CreateSuperheroCommand { get; set; }
+        public ICommand CreateSuperheroCommand { get; set; }
 
         public int AllCost
         {
@@ -140,6 +140,10 @@ namespace GUI_4_LAB_2.ViewModels
             EditSuperheroCommand = new RelayCommand(
                 () => logic.EditSuperhero(SelectedFromHq),
                 () => SelectedFromHq != null
+                );
+
+            CreateSuperheroCommand = new RelayCommand(
+                () => logic.CreateSuperhero()
                 );
 
             Messenger.Register<MainWindowViewModel, string, string>(this, "SHINFO", (recepient, msg) =>

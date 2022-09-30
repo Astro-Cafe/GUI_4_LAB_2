@@ -22,27 +22,30 @@ namespace GUI_4_LAB_2
     /// </summary>
     public partial class SuperheroEditor : Window
     {
-        public SuperheroEditor(Superhero superhero)
+        private bool creatorMode;
+        public SuperheroEditor(Superhero superhero,bool creatorMode)
         {
             InitializeComponent();
             this.DataContext = new SuperheroEditorViewModel();
             (this.DataContext as SuperheroEditorViewModel).Setup(superhero);
+            this.creatorMode = creatorMode;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            (this.DataContext as SuperheroEditorViewModel).Save(tb_name.Text, int.Parse(tb_power.Text), int.Parse(tb_speed.Text), (Aligment)Enum.Parse(typeof(Aligment), cb_aligment.Text));
+            (this.DataContext as SuperheroEditorViewModel).Save(tb_name.Text, int.Parse(tb_power.Text), int.Parse(tb_speed.Text), (Aligment)Enum.Parse(typeof(Aligment), cb_aligment.Text), creatorMode);
+
             foreach (var item in stack.Children)
             {
                 if (item is TextBox t)
                 {
                     t.GetBindingExpression(TextBox.TextProperty).UpdateSource();
                 }
-				if (item is ComboBox c)
-				{
+                if (item is ComboBox c)
+                {
                     c.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
                 }
-                
+
             }
             this.DialogResult = true;
         }

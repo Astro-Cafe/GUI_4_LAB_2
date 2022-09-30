@@ -10,5 +10,6 @@ namespace GUI_4_LAB_2.Services
     public interface ISuperheroEditorService
     {
         void Edit(Superhero sh);
+        void Create();
     }
 }
