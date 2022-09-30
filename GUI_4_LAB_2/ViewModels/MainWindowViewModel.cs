@@ -8,8 +8,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -157,6 +159,15 @@ namespace GUI_4_LAB_2.ViewModels
                 OnPropertyChanged("AVGSpeed");
                 OnPropertyChanged("AVGPower");
             });
+        }
+
+        public void ExportClosingData()
+		{
+
+            string hqJsonString = JsonSerializer.Serialize(HQ);
+            string battlefieldJsonString = JsonSerializer.Serialize(Battlefield);
+            File.WriteAllText("HQData.json", hqJsonString);
+            File.WriteAllText("BattlefieldData.json", battlefieldJsonString);
         }
     }
 }

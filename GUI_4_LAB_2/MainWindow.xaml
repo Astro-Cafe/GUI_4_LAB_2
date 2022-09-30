@@ -9,6 +9,7 @@
         xmlns:helpers="clr-namespace:GUI_4_LAB_2.Helpers"
         mc:Ignorable="d"
         Title="Superhero Planner" Height="525" Width="800" >
+    
     <Window.DataContext>
         <vms:MainWindowViewModel/>
     </Window.DataContext>
@@ -35,6 +36,7 @@
             <Setter Property="Background" Value="{DynamicResource CustomGridColor}" />
         </Style>
     </Window.Resources>
+
 
     <Grid >
         <Grid.RowDefinitions>

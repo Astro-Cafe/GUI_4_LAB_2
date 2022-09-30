@@ -54,5 +54,6 @@ namespace GUI_4_LAB_2
             this.Resources["CustomTextColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#fafafa"));
         }
 		#endregion
+
 	}
 }
