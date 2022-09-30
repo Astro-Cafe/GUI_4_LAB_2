@@ -8,28 +8,49 @@
         xmlns:vms="clr-namespace:GUI_4_LAB_2.ViewModels"
         xmlns:helpers="clr-namespace:GUI_4_LAB_2.Helpers"
         mc:Ignorable="d"
-        Title="Superhero Planner" Height="450" Width="800" >
+        Title="Superhero Planner" Height="525" Width="800" >
     <Window.DataContext>
         <vms:MainWindowViewModel/>
     </Window.DataContext>
+
     <Window.Resources>
         <helpers:NumberToColorConverter x:Key="colorConvert"/>
         <helpers:EnumToColorConverter x:Key="enumConvert" />
+        <SolidColorBrush x:Key="CustomGridColor" />
+        <SolidColorBrush x:Key="CustomLabelColor" />
+        <SolidColorBrush x:Key="CustomButtonColor" />
+        <SolidColorBrush x:Key="CustomTextColor" />
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="{DynamicResource CustomGridColor}" />
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Background" Value="{DynamicResource CustomLabelColor}" />
+            <Setter Property="Foreground" Value="{DynamicResource CustomTextColor}" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="{DynamicResource CustomButtonColor}" />
+            <Setter Property="Foreground" Value="{DynamicResource CustomTextColor}" />
+        </Style>
+        <Style TargetType="ListBox">
+            <Setter Property="Background" Value="{DynamicResource CustomGridColor}" />
+        </Style>
     </Window.Resources>
-    <Grid Background="LightBlue" >
+
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="320*"/>
+            <ColumnDefinition Width="160*"/>
+            <ColumnDefinition Width="317*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Content="HQ" Background="LightBlue" VerticalAlignment="Stretch" VerticalContentAlignment="Center" 
-               HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="0" BorderBrush="Black" BorderThickness="1" FontWeight="Bold"/>
-        <ListBox Grid.Column="0" ItemsSource="{Binding HQ}" SelectedItem="{Binding SelectedFromHq}" HorizontalContentAlignment="Stretch" Grid.Row="1">
+        <Label Content="HQ" VerticalContentAlignment="Center" 
+               HorizontalContentAlignment="Center" Grid.Row="0" Grid.Column="0" BorderBrush="Black" BorderThickness="1" FontWeight="Bold"/>
+        <ListBox Grid.Column="0" ItemsSource="{Binding HQ}" SelectedItem="{Binding SelectedFromHq}" HorizontalContentAlignment="Stretch" Margin="0,53,0,0" Grid.RowSpan="2">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Black"  BorderThickness="1">
@@ -56,10 +77,10 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        
+
         <StackPanel Grid.Column="1" Grid.RowSpan="2">
             <Label HorizontalContentAlignment="Center" Content="{Binding AllCost}" ContentStringFormat="Cost: {0}$" Margin="10"/>
-            
+
             <Button Content="Send to battle!" Command="{Binding AddToBattlefieldCommand}" Margin="10" Padding="10" />
             <Button Content="Retrieve from battle!"  Command="{Binding RemoveFromBattlefieldCommand}" Margin="10" Padding="10" />
             <Button Content="Edit hero!" Margin="10" Command="{Binding EditSuperheroCommand}"  Padding="10" />
@@ -70,11 +91,12 @@
 
             <Label HorizontalContentAlignment="Center" FontSize="14" Content="{Binding AVGSpeed,Mode=OneWay}" ContentStringFormat="Average speed: {0}"/>
             <ProgressBar Height="20" Minimum="0" Maximum="10" Margin="10" Value="{Binding AVGSpeed,Mode=OneWay}" Foreground="{Binding AVGSpeed, Converter={StaticResource colorConvert},Mode=OneWay}"/>
+            <Button Content="Bravo six going dark" Margin="10" Click="Button_Click" Padding="10" />
         </StackPanel>
 
-        <Label Content="Battlefield" Background="LightBlue" VerticalAlignment="Stretch" VerticalContentAlignment="Center" 
-               HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="2" BorderBrush="Black" BorderThickness="1" FontWeight="Bold"/>
-        <ListBox Grid.Column="2" ItemsSource="{Binding Battlefield}" SelectedItem="{Binding SelectedFromBattlefield}" HorizontalContentAlignment="Stretch" Grid.Row="1">
+        <Label Content="Battlefield" VerticalContentAlignment="Center" 
+               HorizontalContentAlignment="Center" Grid.Row="0" Grid.Column="2" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Grid.ColumnSpan="2"/>
+        <ListBox Grid.Column="2" ItemsSource="{Binding Battlefield}" SelectedItem="{Binding SelectedFromBattlefield}" HorizontalContentAlignment="Stretch" Grid.ColumnSpan="2" Margin="0,53,0,0" Grid.RowSpan="2">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Black"  BorderThickness="1">

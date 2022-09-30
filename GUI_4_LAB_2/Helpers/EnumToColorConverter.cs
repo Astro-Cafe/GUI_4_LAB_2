@@ -17,15 +17,15 @@ namespace GUI_4_LAB_2.Helpers
 
             if (content == "evil")
             {
-                return Brushes.PaleVioletRed;
+                return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#b60a1c"));
             }
             else if (content == "neutral")
             {
-                return Brushes.LightYellow;
+                return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f7d202"));
             }
             else if (content == "good")
             {
-                return Brushes.LightGreen;
+                return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#309143"));
             }
             else
             {

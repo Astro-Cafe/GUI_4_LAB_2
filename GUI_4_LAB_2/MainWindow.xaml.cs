@@ -20,9 +20,39 @@ namespace GUI_4_LAB_2
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool darkTheme;
         public MainWindow()
         {
             InitializeComponent();
+            darkTheme = false;
+            SetDefaultColors();
         }
-    }
+
+		#region ColorChange
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			if (!darkTheme)
+			{
+                this.Resources["CustomGridColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#23272a")); 
+                this.Resources["CustomLabelColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2c2f33")); 
+                this.Resources["CustomButtonColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7289da")); 
+                this.Resources["CustomTextColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff")); 
+                darkTheme = true;
+            }
+            else
+			{
+                SetDefaultColors();
+                darkTheme = false;
+            }
+        }
+        
+        private void SetDefaultColors()
+		{
+            this.Resources["CustomGridColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#484b6a"));
+            this.Resources["CustomLabelColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7a7c9f"));
+            this.Resources["CustomButtonColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7a7c9f"));
+            this.Resources["CustomTextColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#fafafa"));
+        }
+		#endregion
+	}
 }

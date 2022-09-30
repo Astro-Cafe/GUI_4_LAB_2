@@ -8,20 +8,29 @@
         xmlns:helpers="clr-namespace:GUI_4_LAB_2.Helpers"
         xmlns:mdl="clr-namespace:GUI_4_LAB_2.Shared"
         mc:Ignorable="d"
-        Title="Superhero Editor 69420" Height="430" Width="300">
+        Title="Superhero Editor 69420" Height="370" Width="300" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Background" Value="#7a7c9f" />
+            <Setter Property="Foreground" Value="#fafafa" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#d2d3db" />
+            <Setter Property="Foreground" Value="#484b6a" />
+        </Style>
+    </Window.Resources>
+    <StackPanel x:Name="stack" VerticalAlignment="Stretch" Background="#7a7c9f">
 
-    <StackPanel x:Name="stack" VerticalAlignment="Stretch">
-
-        <Label Content="Name" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
+        <Label Content="Name" Padding="10" HorizontalContentAlignment="Center" />
         <TextBox x:Name="tb_name" Text="{Binding Current.Name, Mode=OneTime}" Padding="10" HorizontalContentAlignment="Center"/>
 
-        <Label Content="Power" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
+        <Label Content="Power" Padding="10" HorizontalContentAlignment="Center" />
         <TextBox x:Name="tb_power"  Text="{Binding Current.Power , Mode=OneTime}" Padding="10" HorizontalContentAlignment="Center"/>
 
-        <Label Content="Speed" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
+        <Label Content="Speed" Padding="10" HorizontalContentAlignment="Center" />
         <TextBox  x:Name="tb_speed" Text="{Binding Current.Speed, Mode=OneTime}"  Padding="10"  HorizontalContentAlignment="Center"/>
 
-        <Label Content="Alignment" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
+        <Label Content="Alignment" Padding="10" HorizontalContentAlignment="Center"/>
         <ComboBox x:Name="cb_aligment" SelectedValue="{Binding Current.Aligment, Mode=OneTime}" ItemsSource="{Binding Source={helpers:EnumBindingSource {x:Type mdl:Aligment}}}" />
 
         <Button Content="Save" Click="Button_Click" Padding="10" Margin="20"/>
