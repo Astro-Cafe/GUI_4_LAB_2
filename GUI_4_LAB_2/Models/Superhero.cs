@@ -40,7 +40,7 @@ namespace GUI_4_LAB_2.Models
 		public Aligment Aligment
         {
 			get { return aligment; }
-			set { aligment = value; }
+			set { SetProperty(ref aligment, value); }
 		}
         
 

@@ -23,5 +23,13 @@ namespace GUI_4_LAB_2.ViewModels
             this.Current = superhero;
         }
 
+        public void Save(string name,int power,int speed,Aligment aligment)
+		{
+            Current.Name = name;
+            Current.Power = power;
+            Current.Speed = speed;
+            Current.Aligment = aligment;
+		}
+
     }
 }

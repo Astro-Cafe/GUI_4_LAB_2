@@ -1,4 +1,5 @@
 ﻿using GUI_4_LAB_2.Models;
+using GUI_4_LAB_2.Shared;
 using GUI_4_LAB_2.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -30,11 +31,16 @@ namespace GUI_4_LAB_2
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            (this.DataContext as SuperheroEditorViewModel).Save(tb_name.Text, int.Parse(tb_power.Text), int.Parse(tb_speed.Text), (Aligment)Enum.Parse(typeof(Aligment), cb_aligment.Text));
             foreach (var item in stack.Children)
             {
                 if (item is TextBox t)
                 {
                     t.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                }
+				if (item is ComboBox c)
+				{
+                    c.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
                 }
                 
             }

@@ -13,16 +13,16 @@
     <StackPanel x:Name="stack" VerticalAlignment="Stretch">
 
         <Label Content="Name" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
-        <TextBox  Text="{Binding Current.Name, Mode=TwoWay}" Padding="10" HorizontalContentAlignment="Center"/>
+        <TextBox x:Name="tb_name" Text="{Binding Current.Name, Mode=OneTime}" Padding="10" HorizontalContentAlignment="Center"/>
 
         <Label Content="Power" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
-        <TextBox   Text="{Binding Current.Power , Mode=TwoWay}" Padding="10" HorizontalContentAlignment="Center"/>
+        <TextBox x:Name="tb_power"  Text="{Binding Current.Power , Mode=OneTime}" Padding="10" HorizontalContentAlignment="Center"/>
 
         <Label Content="Speed" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
-        <TextBox   Text="{Binding Current.Speed, Mode=TwoWay}"  Padding="10"  HorizontalContentAlignment="Center"/>
+        <TextBox  x:Name="tb_speed" Text="{Binding Current.Speed, Mode=OneTime}"  Padding="10"  HorizontalContentAlignment="Center"/>
 
         <Label Content="Alignment" Padding="10" HorizontalContentAlignment="Center" Background="LightBlue"/>
-        <ComboBox x:Name="cb_aligment" ItemsSource="{Binding Source={helpers:EnumBindingSource {x:Type mdl:Aligment}}}" />
+        <ComboBox x:Name="cb_aligment" SelectedValue="{Binding Current.Aligment, Mode=OneTime}" ItemsSource="{Binding Source={helpers:EnumBindingSource {x:Type mdl:Aligment}}}" />
 
         <Button Content="Save" Click="Button_Click" Padding="10" Margin="20"/>
 
