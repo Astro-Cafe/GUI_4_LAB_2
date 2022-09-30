@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUI_4_LAB_2.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,7 @@ namespace GUI_4_LAB_2
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new MainWindowViewModel();
             darkTheme = false;
             SetDefaultColors();
         }
@@ -55,5 +57,9 @@ namespace GUI_4_LAB_2
         }
 		#endregion
 
+		private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+            (this.DataContext as MainWindowViewModel).ExportClosingData();
+        }
 	}
 }
