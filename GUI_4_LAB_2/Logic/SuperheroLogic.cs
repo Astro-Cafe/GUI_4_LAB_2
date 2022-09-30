@@ -56,12 +56,14 @@ namespace GUI_4_LAB_2.Logic
 		{
 			battlefield.Add(sh);
 			messenger.Send("Superhero deployed!", "SHINFO");
+			hq.Remove(sh);
 		}
 
 		public void RemoveFromBattlefield(Superhero sh)
 		{
 			battlefield.Remove(sh);
 			messenger.Send("Superhero retrieved!", "SHINFO");
+			hq.Add(sh);
 		}
 
 		public void EditSuperhero(Superhero sh)

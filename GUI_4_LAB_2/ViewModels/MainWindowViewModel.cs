@@ -99,7 +99,7 @@ namespace GUI_4_LAB_2.ViewModels
             {
                 Name = "Dora The Destroyer",
                 Power = 10,
-                Speed = 5,
+                Speed = 7,
                 Aligment =Aligment.good
 
             });
@@ -114,14 +114,19 @@ namespace GUI_4_LAB_2.ViewModels
             HQ.Add(new Superhero
             {
                 Name = "Csillámfaszláma",
-                Power = 1,
-                Speed = 3,
+                Power = 3,
+                Speed = 7,
                 Aligment = Aligment.evil
 
             });
+            Battlefield.Add(new Superhero
+            {
+                Name = "Tehén",
+                Power = 1,
+                Speed = 1,
+                Aligment = Aligment.neutral
 
-            Battlefield.Add(HQ[0].GetCopy());
-            Battlefield.Add(HQ[1].GetCopy());
+            });
 
 
 

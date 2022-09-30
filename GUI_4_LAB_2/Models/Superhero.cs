@@ -51,17 +51,5 @@ namespace GUI_4_LAB_2.Models
                 return speed * power;
             }
         }
-
-        public Superhero GetCopy()
-        {
-            return new Superhero
-            {
-                Name = Name,
-                power = power,
-                speed = speed,
-                aligment = aligment
-                
-            };
-        }
     }
 }
