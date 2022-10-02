@@ -85,7 +85,7 @@ namespace GUI_4_LAB_2.ViewModels
         }
 
         public MainWindowViewModel()
-            : this(IsInDesignMode ? null : Ioc.Default.GetService<ISuperheroLogic>())
+			: this(IsInDesignMode ? null : Ioc.Default.GetService<ISuperheroLogic>())
         {
 
         }
@@ -97,38 +97,10 @@ namespace GUI_4_LAB_2.ViewModels
             HQ = new ObservableCollection<Superhero>();
             Battlefield = new ObservableCollection<Superhero>();
 
-            HQ.Add(new Superhero
-            {
-                Name = "Dora The Destroyer",
-                Power = 10,
-                Speed = 7,
-                Aligment =Aligment.good
+            //HQ = JsonSerializer.Deserialize<ObservableCollection<Superhero>>("HQData.json");
+            //Battlefield = JsonSerializer.Deserialize<ObservableCollection<Superhero>>("BattlefieldData.json");
 
-            });
-            HQ.Add(new Superhero
-            {
-                Name = "Chadler",
-                Power = 10,
-                Speed = 10,
-                Aligment = Aligment.neutral
-
-            });
-            HQ.Add(new Superhero
-            {
-                Name = "Csillámfaszláma",
-                Power = 3,
-                Speed = 7,
-                Aligment = Aligment.evil
-
-            });
-            Battlefield.Add(new Superhero
-            {
-                Name = "Tehén",
-                Power = 1,
-                Speed = 1,
-                Aligment = Aligment.neutral
-
-            });
+            ;
 
 
 
